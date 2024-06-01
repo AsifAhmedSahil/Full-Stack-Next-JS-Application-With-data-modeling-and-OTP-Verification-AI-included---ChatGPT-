@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema, model } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface Message extends Document{
     content: string,
@@ -64,4 +64,9 @@ const UserSchema : Schema<User> = new Schema({
     messages:[MessageSchema]
 
 })
-// export const message = new model("message",MessageSchema)
+
+// create model in next js
+
+const UserModel = (mongoose.models.User as mongoose.Model<User>) || mongoose.model<User>("User",UserSchema)
+
+export default UserModel
