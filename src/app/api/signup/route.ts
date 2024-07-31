@@ -10,7 +10,7 @@ export async function POST(request:Request){
 
         const {username,email,password} = await request.json()
 
-        const existingUserVerifiedByUsername = await UserModel.find({
+        const existingUserVerifiedByUsername = await UserModel.findOne({
             username,
             isVerified:true
         })
@@ -79,7 +79,7 @@ export async function POST(request:Request){
             }
             return Response.json({
                 success:true,
-                message:"User Registered Successfully. Please verify your email successfully"
+                message:"User Registered Successfully. Please verify your email "
             },{
                 status:201
             })
