@@ -1,7 +1,7 @@
-import { sendVerificationEmail } from "@/helpers/sendVerificationEmail"
 import dbConnect from "@/lib/dbConnect"
 import UserModel from "@/model/user"
 import bcrypt from "bcryptjs"
+import { sendVerificationEmail } from "@/helpers/sendVerificationEmail"
 
 
 export async function POST(request:Request){
@@ -90,7 +90,7 @@ export async function POST(request:Request){
         
     } catch (error) {
         console.error("Error registering user",error)
-        Response.json({
+        return Response.json({
             success:false,
             message: "Error registering user"
         },
