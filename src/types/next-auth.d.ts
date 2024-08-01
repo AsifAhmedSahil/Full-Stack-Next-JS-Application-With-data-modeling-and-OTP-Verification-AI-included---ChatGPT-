@@ -17,3 +17,12 @@ declare module "next-auth" {
         } & DefaultSession['user']
     }
 }
+
+declare module "next-auth/jwt"{
+    interface JWT {
+        _id?: string;
+            isVerified?: boolean;
+            isAcceptingMessages?: boolean;
+            username?:string
+    }
+}
